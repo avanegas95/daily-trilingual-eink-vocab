@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Trilingual E-Ink Vocabulary Display
+
+[Service]
+Type=oneshot
+User=avanegas
+WorkingDirectory=/home/avanegas/Projects/daily-trilingual-eink-vocab
+ExecStart=/home/avanegas/Projects/daily-trilingual-eink-vocab/venv/bin/python /home/avanegas/Projects/daily-trilingual-eink-vocab/daily_word_trilingual.py
+
+[Install]
+WantedBy=multi-user.target
