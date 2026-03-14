@@ -26,14 +26,12 @@ DISPLAY_HEIGHT = 122
 
 PADDING = 8
 TOP_STATUS_H = 16
-BOTTOM_STATUS_H = 14
 CONTENT_TOP_GAP = 4
 
 HEADER_FONT_SIZE = 12
 WORD_MAX_FONT = 34
 WORD_MIN_FONT = 16
 LANG_SIZE = 16
-FOOTER_SIZE = 10
 
 QR_SIZE = 52
 QR_BORDER = 1
@@ -268,13 +266,6 @@ def draw_status_bar(draw, battery_info):
     draw.line((0, TOP_STATUS_H, DISPLAY_WIDTH, TOP_STATUS_H), fill=0, width=1)
 
 
-def draw_footer(draw, voltage_text):
-    footer_font = load_font(FOOTER_SIZE)
-    y = DISPLAY_HEIGHT - BOTTOM_STATUS_H
-    draw.line((0, y - 2, DISPLAY_WIDTH, y - 2), fill=0, width=1)
-    draw.text((PADDING, y), voltage_text, font=footer_font, fill=0)
-
-
 # =========================
 # Main render
 # =========================
@@ -331,13 +322,6 @@ def main():
     qr.make(fit=True)
     qr_img = qr.make_image(fill_color="black", back_color="white").resize((QR_SIZE, QR_SIZE))
     image.paste(qr_img, (qr_x, qr_y))
-
-    # footer
-    if battery["ok"] and battery["voltage"] is not None:
-        footer_text = f"Battery {battery['voltage']}V"
-    else:
-        footer_text = "Battery unavailable"
-    draw_footer(draw, footer_text)
 
     epd = epd2in13_V4.EPD()
     epd.init()
