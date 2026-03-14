@@ -2,9 +2,9 @@
 # -*- coding:utf-8 -*-
 
 import sys
+from pathlib import Path
 
-WAVESHARE_LIB = "/home/avanegas/e-Paper/RaspberryPi_JetsonNano/python/lib"
-sys.path.append(WAVESHARE_LIB)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from waveshare_epd import epd2in13_V4
 

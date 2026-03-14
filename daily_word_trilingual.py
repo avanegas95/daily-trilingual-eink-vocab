@@ -2,6 +2,7 @@
 import json
 import os
 import random
+import sys
 import textwrap
 from datetime import datetime
 from pathlib import Path
@@ -12,6 +13,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Waveshare import
 # Adjust this if your local library path/module name differs.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from waveshare_epd import epd2in13_V4
 
 
