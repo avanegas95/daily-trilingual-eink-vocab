@@ -287,11 +287,7 @@ def main():
 
     draw_status_bar(draw, battery)
 
-    qr_x = DISPLAY_WIDTH - PADDING - QR_SIZE
-    qr_y = TOP_STATUS_H + CONTENT_TOP_GAP + 8
-
-    safe_w = qr_x - (PADDING * 2) - 4
-
+    safe_w = DISPLAY_WIDTH - (PADDING * 2)
     y = TOP_STATUS_H + CONTENT_TOP_GAP + 2
 
     # English word
@@ -318,7 +314,9 @@ def main():
         _, lh = text_size(draw, line, lang_font)
         y += lh + 2
 
-    # QR code
+    # QR code (bottom right)
+    qr_x = DISPLAY_WIDTH - PADDING - QR_SIZE
+    qr_y = DISPLAY_HEIGHT - PADDING - QR_SIZE
     qr = qrcode.QRCode(border=QR_BORDER)
     qr.add_data(wiki_url)
     qr.make(fit=True)
